@@ -4,10 +4,30 @@
 
 ## Джерело даних
 
-За замовчуванням використовується таблиця зі сторінки:
+За замовчуванням парситься **Wikipedia** — таблиця зі сторінки:
 https://en.wikipedia.org/w/index.php?title=List_of_countries_by_population_(United_Nations)&oldid=1215058959
 
-Додатково підтримуються інші джерела (StatisticsTimes, WorldOMeters); джерело вибирається змінною оточення `DATA_SOURCE`.
+Можна парсити не тільки Вікіпедію: джерело задається змінною оточення **`DATA_SOURCE`**.
+
+| Значення `DATA_SOURCE` | Сайт |
+|------------------------|------|
+| `wikipedia`            | Wikipedia (за замовчуванням) |
+| `statisticstimes`       | https://statisticstimes.com/demographics/countries-by-population.php |
+| `worldometers`          | https://www.worldometers.info/world-population/population-by-country/ |
+
+**Як запустити з іншого джерела:**
+
+Windows (PowerShell):
+```powershell
+$env:DATA_SOURCE = "statisticstimes"; docker compose up get_data
+```
+
+Linux / macOS:
+```bash
+DATA_SOURCE=statisticstimes docker compose up get_data
+```
+
+Потім вивід як завжди: `docker compose up print_data`.
 
 ## Репозиторій
 
